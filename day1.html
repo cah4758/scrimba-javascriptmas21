@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <style>
+      :root {
+        --wine-red: #c7375f;
+        --bright-red: #d42d2f;
+        --dark-green: #344d2f;
+        --light-green: #77a047;
+        --gold: #fac57d;
+        --snow: #f0f4f7;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        color: var(--dark-green);
+        background-color: var(--snow);
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        background: var(--wine-red);
+        color: var(--snow);
+        padding: 1em 2em;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+          rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+      }
+
+      .countdown-display {
+        font-size: 100px;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Christmas Countdown 🎄</h1>
+    <div class="container">
+      <p id="countdown-display" class="countdown-display">-</p>
+      <p class="countdown-text">Days 'til Christmas!</p>
+    </div>
+    <script>
+      const countdownDisplay = document.getElementById("countdown-display");
+      const countdownText = document.querySelector(".countdown-text");
+
+      function renderCountdown() {
+        const christmas = 25;
+        // Task:
+        // - Get today's date (you only need the day).
+        const today = new Date();
+        const todaysDate = today.getDate();
+        console.log(todaysDate);
+
+        // - Calculate remaining days.
+        if (todaysDate === christmas) {
+          // Remove + add Merry Christmas
+          countdownDisplay.style.fontSize = "55px";
+          countdownDisplay.innerText = "MERRY CHRISTMAS! 🎅";
+          countdownText.innerText = "";
+          // Create the innertext for a future countown
+        } else {
+          // - Display remaining days in countdownDisplay.
+          countdownDisplay.innerText = christmas - todaysDate;
+        }
+      }
+
+      renderCountdown();
+
+      // Stretch goals:
+      // - Display hours, minutes, seconds.
+      // - Add a countdown for another festival, your birthday, or Christmas 2022.
+    </script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <style>
+      :root {
+        --wine-red: #c7375f;
+        --bright-red: #d42d2f;
+        --dark-green: #344d2f;
+        --light-green: #77a047;
+        --gold: #fac57d;
+        --snow: #f0f4f7;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        color: var(--snow);
+        background-color: var(--bright-red);
+      }
+
+      .checklist {
+        color: var(--dark-green);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-width: 200px;
+        min-height: 200px;
+        max-width: 5ch;
+        background: var(--snow);
+        padding: 1em 2em;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+          rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+      }
+
+      .checklist-item {
+        margin: 0.5em;
+        width: 100%;
+        text-align: left;
+        font-weight: bold;
+      }
+
+      input[type="checkbox"]:checked + label.strikethrough {
+        text-decoration: line-through;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Christmas Shopping List</h1>
+    <div class="checklist" id="checklist"></div>
+
+    <script>
+      const items = ["Candles", "Decorations", "Chocolate"];
+      const checklist = document.getElementById("checklist");
+
+      // Task:
+      // - For each item in the items array, create a div with a class of "checklist-item", which contains a checkbox input and corresponding label.
+      for (let i = 0; i < items.length; i++) {
+        const para = document.createElement("div");
+        const node = document.createTextNode(`${items[i]} `);
+        const box = document.createElement("input");
+        para.setAttribute("class", "checklist-item");
+        // - Make sure that the shopping list can render a checkbox for all the items, even if new items are added to the items array.
+        box.setAttribute("type", "checkbox");
+        box.setAttribute("value", items[i]);
+        para.appendChild(node);
+        para.appendChild(box);
+        const element = document.getElementById("checklist");
+        element.appendChild(para, box);
+      }
+
+      // Stretch goals:
+      // - Add an input which allows the user to add more items.
+      // - Add a delete button for the items.
+    </script>
+  </body>
+</html>
